@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { PostsService } from './posts.service';
 import { PostsResolver } from './posts.resolver';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -10,6 +11,9 @@ import { UsersResolver } from './users.resolver';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     GraphQLModule.forRoot<ApolloFederationDriverConfig>({
       driver: ApolloFederationDriver,
       autoSchemaFile: {
