@@ -8,7 +8,7 @@ export const CurrentUser = createParamDecorator(
       if (headers.user) {
         return JSON.parse(headers.user);
       }
-    } catch (err) {
+    } catch {
       return null;
     }
   },
